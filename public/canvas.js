@@ -32,11 +32,9 @@ canvas.addEventListener("mousedown", (e) => {
         x: e.clientX,
         y: e.clientY
     }
-
     // send data to server
     socket.emit("beginPath", data);
 })
-
 canvas.addEventListener("mousemove", (e) => {
     if (mouseDown) {
         let data = {
@@ -83,6 +81,7 @@ function undoRedoCanvas(trackObj) {
     let img = new Image(); // new image reference element
     img.src = url;
     img.onload = (e) => {
+        tool.clearRect(0, 0, canvas.width, canvas.height);
         tool.drawImage(img, 0, 0, canvas.width, canvas.height);
     }
 }
